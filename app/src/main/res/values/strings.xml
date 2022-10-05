@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Calculator</string>
+
+    <!-- all calculator button numbers -->
+    <string name="zero_button">0</string>
+    <string name="one_button">1</string>
+    <string name="two_button">2</string>
+    <string name="three_button">3</string>
+    <string name="four_button">4</string>
+    <string name="five_button">5</string>
+    <string name="six_button">6</string>
+    <string name="seven_button">7</string>
+    <string name="eight_button">8</string>
+    <string name="nine_button">9</string>
+
+    <!-- all calculator button functions -->
+    <string name="addition">+</string>
+    <string name="subtraction">-</string>
+    <string name="division">÷</string>
+    <string name="multiplication">*</string>
+    <string name="percent">%</string>
+    <string name="root_out">√</string>
+    <string name="pii">π</string>
+    <string name="pow_x_y">X^2</string>
+    <string name="equal_sign">=</string>
+
+    <!-- other -->
+    <string name="reset_button">C</string>
+
+
+</resources>
