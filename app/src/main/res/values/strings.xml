@@ -23,6 +23,7 @@
     <string name="pii">π</string>
     <string name="pow_x_y">X^2</string>
     <string name="equal_sign">=</string>
+    <string name="dott_sign">.</string>
 
     <!-- other -->
     <string name="reset_button">C</string>

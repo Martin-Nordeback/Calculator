@@ -11,9 +11,7 @@
         android:id="@+id/result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="60dp"
-        android:layout_marginEnd="8dp"
         android:ems="10"
         android:focusable="false"
         android:focusableInTouchMode="false"
@@ -21,8 +19,6 @@
         android:textColor="@color/light_grey"
         android:textSize="@dimen/large_font"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -30,23 +26,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/large_font"
-        app:layout_constraintBaseline_toBaselineOf="@id/newNumber"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBaseline_toBaselineOf="@id/button7"
+        app:layout_constraintEnd_toStartOf="@id/button7" />
 
     <EditText
         android:id="@+id/newNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:ems="10"
         android:inputType="numberSigned|numberDecimal"
         android:textColor="@color/light_grey"
         android:textSize="@dimen/large_font"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/result" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/result"
+        app:layout_constraintEnd_toStartOf="@+id/result"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button0"
@@ -136,12 +129,14 @@
         android:id="@+id/button7"
         android:layout_width="70dp"
         android:layout_height="80dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:backgroundTint="@color/dark_grey"
         android:minWidth="48dp"
         android:text="@string/seven_button"
         android:textSize="@dimen/medium_font"
-        app:layout_constraintStart_toStartOf="@+id/newNumber"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newNumber" />
 
     <Button
@@ -163,7 +158,7 @@
         android:layout_marginStart="8dp"
         android:backgroundTint="@color/dark_grey"
         android:minWidth="48dp"
-        android:text="9"
+        android:text="@string/nine_button"
         android:textSize="@dimen/medium_font"
         app:layout_constraintBaseline_toBaselineOf="@+id/button8"
         app:layout_constraintStart_toEndOf="@+id/button8" />
@@ -213,17 +208,17 @@
         android:minWidth="48dp"
         android:text="@string/addition"
         android:textSize="@dimen/medium_font"
-        app:layout_constraintBaseline_toBaselineOf="@+id/buttonPercent"
-        app:layout_constraintStart_toEndOf="@+id/buttonPercent" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/buttonEqual"
+        app:layout_constraintStart_toEndOf="@+id/buttonEqual" />
 
     <Button
-        android:id="@+id/buttonPercent"
+        android:id="@+id/buttonEqual"
         android:layout_width="70dp"
         android:layout_height="80dp"
         android:layout_marginStart="8dp"
         android:backgroundTint="@color/orange"
         android:minWidth="48dp"
-        android:text="@string/percent"
+        android:text="@string/equal_sign"
         android:textSize="@dimen/medium_font"
         app:layout_constraintBaseline_toBaselineOf="@+id/buttonDott"
         app:layout_constraintStart_toEndOf="@+id/buttonDott" />
@@ -283,23 +278,9 @@
         android:layout_marginStart="8dp"
         android:backgroundTint="@color/orange"
         android:minWidth="48dp"
-        android:text="x²"
+        android:text="@string/pow_x_y"
         android:textSize="@dimen/medium_font"
         app:layout_constraintBaseline_toBaselineOf="@+id/buttonSubtraction"
         app:layout_constraintStart_toEndOf="@+id/buttonSubtraction" />
-
-    <Button
-        android:id="@+id/buttonEqual"
-        android:layout_width="375dp"
-        android:layout_height="69dp"
-        android:layout_marginTop="12dp"
-        android:backgroundTint="@color/orange"
-        android:gravity="center"
-        android:minWidth="48dp"
-        android:text="@string/equal_sign"
-        android:textSize="@dimen/medium_font"
-        app:layout_constraintEnd_toEndOf="@+id/eraseButton"
-        app:layout_constraintStart_toStartOf="@+id/button0"
-        app:layout_constraintTop_toBottomOf="@+id/button0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
