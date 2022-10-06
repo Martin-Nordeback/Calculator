@@ -16,7 +16,7 @@
     <!-- all calculator button functions -->
     <string name="addition">+</string>
     <string name="subtraction">-</string>
-    <string name="division">÷</string>
+    <string name="division">/</string>
     <string name="multiplication">*</string>
     <string name="percent">%</string>
     <string name="root_out">√</string>
