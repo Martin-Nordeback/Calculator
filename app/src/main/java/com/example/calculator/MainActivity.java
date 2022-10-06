@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Switch;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -53,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
         Button buttonPi = findViewById(R.id.buttonPi);
         Button buttonRoot = findViewById(R.id.buttonRoot);
         Button buttonPow = findViewById(R.id.button35);
-
         Button buttonErase = findViewById(R.id.eraseButton);
+
 
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
@@ -63,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 newNumber.append(b.getText().toString());
             }
         };
+
         button0.setOnClickListener(listener);
         button1.setOnClickListener(listener);
         button2.setOnClickListener(listener);
@@ -74,6 +74,12 @@ public class MainActivity extends AppCompatActivity {
         button8.setOnClickListener(listener);
         button9.setOnClickListener(listener);
         buttonDott.setOnClickListener(listener);
+        //buttonErase.setOnClickListener(opListener);
+        buttonErase.setOnClickListener(view -> {
+            newNumber.getText().clear();
+            result.getText().clear();
+        });
+
 
         View.OnClickListener opListener = new View.OnClickListener() {
             @Override
@@ -100,6 +106,21 @@ public class MainActivity extends AppCompatActivity {
         buttonPi.setOnClickListener(opListener);
         buttonRoot.setOnClickListener(opListener);
         buttonPow.setOnClickListener(opListener);
+        //buttonErase.setOnClickListener(opListener);
+        buttonErase.setOnClickListener(view -> {
+            newNumber.getText().clear();
+            result.getText().clear();
+        });
+
+
+        /*buttonErase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                newNumber.setText(null);
+                result.setText(null);
+                displayOperation.setText(null);
+            }
+        });*/
     }
 
     @Override
@@ -128,9 +149,6 @@ public class MainActivity extends AppCompatActivity {
                 pendingOperation = operation;
             }
             switch (pendingOperation) {
-                case "=":
-                    operation1 = value;
-                    break;
                 case "/":
                     if (value == 0) {
                         operation1 = 0.0;
@@ -148,21 +166,38 @@ public class MainActivity extends AppCompatActivity {
                     operation1 += value;
                     break;
                 case "%":
-                    operation1 %= value;
-                    break;
-
-                /*case "π":
-                    operation1 π= value;
-                    break;
-                case "+":
-                    operation1 √= value;
+                    operation1 %= operation1 * (value);
                     break;
                 case "x²":
-                    operation1 x²= value;
-                    break;*/
+                    operation1 = Math.pow((operation1), value);
+                    //operation1 += Math.exp(operation1);
+                    break;
+                case "π":
+                    operation1 = Math.PI * (value);
+                    break;
+                case "√":
+                    operation1 = (value) * Math.sqrt(operation1);
+                    break;
+                case "=":
+                    operation1 = value;
+                    break;
             }
         }
         result.setText(operation1.toString());
         newNumber.setText("");
     }
 }
+
+/*                case "%":
+                    operation1 %= value;
+                    break;
+                case "x²":
+                    operation1 = Math.pow(value, value);
+                    break;
+                case "π":
+                    testKnapp = Math.PI == value;
+                    break;
+                case "√":
+                    operation1 √= value;
+                    break;
+ */
