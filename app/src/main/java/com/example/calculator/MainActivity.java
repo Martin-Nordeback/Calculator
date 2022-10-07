@@ -1,3 +1,4 @@
+//Martin N, Daniel D, Mikael S
 package com.example.calculator;
 
 import androidx.annotation.NonNull;
@@ -7,10 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    //Different variables får input/number/result
+    //Different variables for input/number/result
     private EditText result;
     private EditText newNumber;
     private TextView displayOperation;
@@ -19,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
     private Double operation1 = null;
     private String pendingOperation = "=";
 
-    private static final String STATE_PENDING_OPERATION = "PendingOperation";
-    private static final String STATE_OPERATION1 = "Operation1";
+    //private static final String STATE_PENDING_OPERATION = "PendingOperation";
+    //private static final String STATE_OPERATION1 = "Operation1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,12 +76,10 @@ public class MainActivity extends AppCompatActivity {
         button8.setOnClickListener(listener);
         button9.setOnClickListener(listener);
         buttonDott.setOnClickListener(listener);
-        //buttonErase.setOnClickListener(opListener);
+        buttonErase.setOnClickListener(listener);
         buttonErase.setOnClickListener(view -> {
             newNumber.getText().clear();
-            result.getText().clear();
         });
-
 
         View.OnClickListener opListener = new View.OnClickListener() {
             @Override
@@ -106,24 +106,13 @@ public class MainActivity extends AppCompatActivity {
         buttonPi.setOnClickListener(opListener);
         buttonRoot.setOnClickListener(opListener);
         buttonPow.setOnClickListener(opListener);
-        //buttonErase.setOnClickListener(opListener);
+        buttonErase.setOnClickListener(opListener);
         buttonErase.setOnClickListener(view -> {
             newNumber.getText().clear();
-            result.getText().clear();
         });
-
-
-        /*buttonErase.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                newNumber.setText(null);
-                result.setText(null);
-                displayOperation.setText(null);
-            }
-        });*/
     }
 
-    @Override
+   /* @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         outState.putString(PERFORMANCE_HINT_SERVICE, pendingOperation);
         if (operation1 != null) {
@@ -138,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         pendingOperation = savedInstanceState.getString(STATE_PENDING_OPERATION);
         operation1 = savedInstanceState.getDouble(STATE_OPERATION1);
         displayOperation.setText(pendingOperation);
-    }
+    }*/
 
     private void performOperation(Double value, String operation) {
 
@@ -166,11 +155,10 @@ public class MainActivity extends AppCompatActivity {
                     operation1 += value;
                     break;
                 case "%":
-                    operation1 %= operation1 * (value);
+                    operation1 = operation1 * (value / 100);
                     break;
                 case "x²":
                     operation1 = Math.pow((operation1), value);
-                    //operation1 += Math.exp(operation1);
                     break;
                 case "π":
                     operation1 = Math.PI * (value);
@@ -185,19 +173,16 @@ public class MainActivity extends AppCompatActivity {
         }
         result.setText(operation1.toString());
         newNumber.setText("");
+
+        /*View.OnClickListener resetCalculation = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                 Button c = (Button) View;
+
+                newNumber.getText().clear();
+                result.getText().clear();
+            }
+        };*/
+
     }
 }
-
-/*                case "%":
-                    operation1 %= value;
-                    break;
-                case "x²":
-                    operation1 = Math.pow(value, value);
-                    break;
-                case "π":
-                    testKnapp = Math.PI == value;
-                    break;
-                case "√":
-                    operation1 √= value;
-                    break;
- */
