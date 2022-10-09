@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/activity_main"
     android:layout_height="match_parent"
     android:background="@color/background_dark_grey"
     tools:context=".MainActivity">
@@ -29,6 +30,8 @@
         android:id="@+id/operation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/light_grey"
         android:textSize="@dimen/large_font"
         app:layout_constraintBaseline_toBaselineOf="@id/newNumber"
         app:layout_constraintStart_toStartOf="parent" />
@@ -301,12 +304,5 @@
         app:layout_constraintEnd_toEndOf="@+id/eraseButton"
         app:layout_constraintStart_toStartOf="@+id/button0"
         app:layout_constraintTop_toBottomOf="@+id/button0" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.92" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

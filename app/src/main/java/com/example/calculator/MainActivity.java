@@ -8,11 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Switch;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    //Different variables for input/number/result
+
+    //References to store and show input from user and result at the top widget
     private EditText result;
     private EditText newNumber;
     private TextView displayOperation;
@@ -20,10 +20,11 @@ public class MainActivity extends AppCompatActivity {
     //variables to hold the operations above
     private Double operation1 = null;
     private String pendingOperation = "=";
+    //Variables for onsave and onrestore if you flip phone horizontal ex
+    private static final String STATE_PENDING_OPERATION = "PendingOperation";
+    private static final String STATE_OPERATION1 = "Operation1";
 
-    //private static final String STATE_PENDING_OPERATION = "PendingOperation";
-    //private static final String STATE_OPERATION1 = "Operation1";
-
+    //Finding all element from our design of activity_main below
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         Button buttonPow = findViewById(R.id.button35);
         Button buttonErase = findViewById(R.id.eraseButton);
 
-
+        //Clicklistener for number or dot
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,12 +82,14 @@ public class MainActivity extends AppCompatActivity {
             newNumber.getText().clear();
         });
 
+        //Clicklistener for operation(math signs)
         View.OnClickListener opListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Button b = (Button) view;
                 String op = b.getText().toString();
                 String value = newNumber.getText().toString();
+                //try/catch if you dot sign before any number
                 try {
                     Double doubleValue = Double.valueOf(value);
                     performOperation(doubleValue, op);
@@ -112,7 +115,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-   /* @Override
+    //if operation1 isn't 0 the input should be stored in STATE_OPERATION1
+    @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         outState.putString(PERFORMANCE_HINT_SERVICE, pendingOperation);
         if (operation1 != null) {
@@ -127,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
         pendingOperation = savedInstanceState.getString(STATE_PENDING_OPERATION);
         operation1 = savedInstanceState.getDouble(STATE_OPERATION1);
         displayOperation.setText(pendingOperation);
-    }*/
+    }
 
     private void performOperation(Double value, String operation) {
 
@@ -139,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
             }
             switch (pendingOperation) {
                 case "/":
+                    //This if/else is for crash if you divide 0 with 0
                     if (value == 0) {
                         operation1 = 0.0;
                     } else {
@@ -169,20 +174,11 @@ public class MainActivity extends AppCompatActivity {
                 case "=":
                     operation1 = value;
                     break;
+
             }
         }
         result.setText(operation1.toString());
         newNumber.setText("");
-
-        /*View.OnClickListener resetCalculation = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                 Button c = (Button) View;
-
-                newNumber.getText().clear();
-                result.getText().clear();
-            }
-        };*/
 
     }
 }
